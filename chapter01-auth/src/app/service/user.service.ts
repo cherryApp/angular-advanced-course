@@ -19,7 +19,7 @@ export class UserService {
   get(id?: string | number): Observable<User | User[]> {
     let url = `${this.config.apiUrl}${this.entity}`;
     if (id) {
-      url += `=${id}`;
+      url += `/${id}`;
     }
 
     return this.http.get<User[]>(url);
@@ -31,7 +31,7 @@ export class UserService {
   }
 
   update(user: User): Observable<User> {
-    const url = `${this.config.apiUrl}${this.entity}?${user.id}`;
+    const url = `${this.config.apiUrl}${this.entity}/${user.id}`;
     return this.http.put<User>(url, user);
   }
 }

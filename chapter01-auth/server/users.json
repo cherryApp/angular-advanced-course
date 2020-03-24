@@ -5,8 +5,8 @@
       "first_name": "Charlie",
       "last_name": "Firpo",
       "email": "seyden0@merriam-webster.com",
-      "password": "$2a$10$KKzAQMXlYJSq7VMlCKcJb.cIVpW4J22j482HLbglgpvTarJZUQc1C",
-      "role": "2"
+      "password": "$2a$10$qCcDsV1BLCHBKVhaJLOLSuwZB8Q4fGxBc52IlwLSCUawomdZ4JGvq",
+      "role": "3"
     },
     {
       "id": 2,
@@ -130,11 +130,11 @@
     },
     {
       "id": 17,
-      "first_name": "D'arcy",
+      "first_name": "Bob",
       "last_name": "Mowat",
       "email": "dmowatg@cisco.com",
-      "password": "$2a$10$ZF7ate3Cnl0j1nTfq02VWeXlB29KqceigoBChU.T9/8WIYvVDPyp2",
-      "role": 2
+      "password": "$2a$10$YCkHdz8M86Ts26FDIVJM7.wmADU3Zwb5AF3ooulapRwcfFTukMgqu",
+      "role": "1"
     },
     {
       "id": 18,
