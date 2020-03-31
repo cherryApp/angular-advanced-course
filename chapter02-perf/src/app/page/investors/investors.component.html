@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-6" *ngIf="(userList$ | async); let list">
+    <app-fib-list [list]="list" [title]="'Fibonacci'" [type]="'fibonacci'"></app-fib-list>
+  </div>
+  <div class="col-6" *ngIf="(userList$ | async); let list">
+    <app-fib-list [list]="list" [title]="'Grow'" [type]="'grow'"></app-fib-list>
+  </div>
+</div>

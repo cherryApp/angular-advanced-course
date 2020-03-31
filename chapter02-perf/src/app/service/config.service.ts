@@ -10,6 +10,7 @@ export class ConfigService {
   navigation: {label: string, href: string, role: number}[] = [
     {label: 'Home', href: '', role: 1},
     {label: 'Users', href: '/users', role: 2},
+    {label: 'Investors', href: '/investors', role: 2},
   ];
 
   userColumns: {key: string, label: string}[] = [

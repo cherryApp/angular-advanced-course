@@ -12,6 +12,9 @@ import { UsersComponent } from './page/users/users.component';
 import { UserEditComponent } from './page/user-edit/user-edit.component';
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
+import { InvestorsComponent } from './page/investors/investors.component';
+import { FibListComponent } from './common/fib-list/fib-list.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { JwtInterceptorService } from './service/jwt-interceptor.service';
     LoginComponent,
     UsersComponent,
     UserEditComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    InvestorsComponent,
+    FibListComponent,
   ],
   imports: [
     BrowserModule,
