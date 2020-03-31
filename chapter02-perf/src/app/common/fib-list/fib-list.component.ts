@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { User } from 'src/app/model/user';
 
 @Component({
@@ -7,7 +7,7 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./fib-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FibListComponent implements OnInit {
+export class FibListComponent implements OnInit, OnChanges {
 
   @Input() list;
   @Input() title;
@@ -19,13 +19,24 @@ export class FibListComponent implements OnInit {
 
   filterPhrase = '';
 
-  constructor() { }
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
+    this.changeDetectorRef.detach();
+    // this.changeDetectorRef.detectChanges();
+
+    // setInterval( () => this.changeDetectorRef.detectChanges(), 1000 );
+  }
+
+  ngOnChanges() {
+    this.changeDetectorRef.detectChanges();
   }
 
   handleKey(event: any) {
     if (event.keyCode === 13) {
+      this.changeDetectorRef.detectChanges();
       console.log(this.filterPhrase);
       this.filterPhrase = '';
     }
