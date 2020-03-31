@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="col-12 mb-3">
-  <input [(ngModel)]="filterPhrase" (keydown)="handleKey($event)" type="text" class="form-control">
+  <input [formControl]="filterControl" (keydown)="handleKey($event)" type="text" class="form-control">
 </div>
 <table class="table">
   <thead>
@@ -14,11 +14,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let investor of list">
+    <tr *ngFor="let investor of list | simpleFilter:filterPhrase">
       <td *ngFor="let col of cols"> {{ investor[col.key] }} </td>
       <td>
-        <span class="badge badge-primary">
+        <span *ngIf="type === 'fibonacci'" class="badge badge-primary">
           ${{ calculate(investor) }}
+        </span>
+        <span *ngIf="type === 'grow'" class="badge badge-primary">
+          ${{ {base: 1000, interest: 0.06, years: (investor.role * 10)} | grow }}
         </span>
       </td>
     </tr>

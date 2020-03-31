@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { User } from 'src/app/model/user';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-fib-list',
@@ -17,6 +19,7 @@ export class FibListComponent implements OnInit, OnChanges {
     {key: 'first_name', label: 'Fname'},
   ];
 
+  filterControl: FormControl = new FormControl('');
   filterPhrase = '';
 
   constructor(
@@ -25,8 +28,17 @@ export class FibListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.changeDetectorRef.detach();
-    // this.changeDetectorRef.detectChanges();
 
+    this.filterControl.valueChanges.pipe(
+      debounceTime(2000)
+    ).subscribe(
+      value => {
+        this.filterPhrase = value;
+        this.changeDetectorRef.detectChanges();
+      }
+    );
+
+    // this.changeDetectorRef.detectChanges();
     // setInterval( () => this.changeDetectorRef.detectChanges(), 1000 );
   }
 
