@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-fib-list',
   templateUrl: './fib-list.component.html',
-  styleUrls: ['./fib-list.component.scss']
+  styleUrls: ['./fib-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FibListComponent implements OnInit {
 
