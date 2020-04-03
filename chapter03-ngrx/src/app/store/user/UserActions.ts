@@ -11,7 +11,7 @@ export const loadItems = createAction(
 );
 
 export const errorItem = createAction(
-  '[User] error items',
+  '[User] error item',
   props<{message: string}>()
 );
 
