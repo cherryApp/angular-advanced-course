@@ -12,6 +12,7 @@ import { UsersComponent } from './page/users/users.component';
 import { UserEditComponent } from './page/user-edit/user-edit.component';
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { JwtInterceptorService } from './service/jwt-interceptor.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true},
