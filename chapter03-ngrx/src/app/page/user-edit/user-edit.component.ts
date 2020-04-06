@@ -4,6 +4,10 @@ import { UserService } from 'src/app/service/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap, take } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { getOneItem } from 'src/app/store/user/UserActions';
+import { selectOneItem } from 'src/app/store/user/UserReducers';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,29 +16,24 @@ import { NgForm } from '@angular/forms';
 })
 export class UserEditComponent implements OnInit {
 
-  user: User = null;
+  user$: Observable<User> = null;
+  userID: number;
   serverError = '';
 
   constructor(
     private userService: UserService,
     private ar: ActivatedRoute,
+    private store: Store<any>,
   ) { }
 
   ngOnInit(): void {
-    this.ar.params.pipe(
-      switchMap( params => this.userService.get(params.id) )
-    )
-    .pipe( take(1) )
-    .subscribe(
-      user => {
-        this.user = (user as User);
-        this.user.password = '';
-      }
-    );
+    this.userID = parseInt(this.ar.snapshot.params.id, 10);
+    this.store.dispatch( getOneItem({id: this.userID}) );
+    this.user$ = this.store.pipe( select(selectOneItem) );
   }
 
   onSubmit(ngForm: NgForm): void {
-    const putObject = Object.assign({id: this.user.id}, ngForm.value);
+    /* const putObject = Object.assign({id: this.user.id}, ngForm.value);
     this.userService.update(putObject)
       .toPromise().then(
         user => history.back(),
@@ -45,7 +44,7 @@ export class UserEditComponent implements OnInit {
             this.serverError = '';
           }, 3000);
         }
-      );
+      ); */
   }
 
 }
