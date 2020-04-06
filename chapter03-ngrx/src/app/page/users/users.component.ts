@@ -4,8 +4,9 @@ import { UserService } from 'src/app/service/user.service';
 import { ConfigService } from 'src/app/service/config.service';
 import { User } from 'src/app/model/user';
 import { Store, select } from '@ngrx/store';
-import { getItems, addItem, deleteItem } from 'src/app/store/user/UserActions';
-import { selectItems } from 'src/app/store/user/UserReducers';
+import { getItems, addItem, deleteItem, errorFlush } from 'src/app/store/user/UserActions';
+import { selectItems, selectError } from 'src/app/store/user/UserReducers';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -17,6 +18,14 @@ export class UsersComponent implements OnInit {
   // list$: Observable<User | User[]> = this.userService.get();
   list$: Observable<User | User[]>;
   cols: any[] = this.config.userColumns;
+  error$ = this.store.pipe( select(selectError) ).pipe(
+    tap( error => {
+      const to = setTimeout( () => {
+        clearTimeout(to);
+        this.store.dispatch(errorFlush());
+      }, 3000);
+    })
+  );
 
   constructor(
     private userService: UserService,
