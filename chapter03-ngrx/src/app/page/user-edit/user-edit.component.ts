@@ -6,7 +6,7 @@ import { switchMap, take } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { getOneItem } from 'src/app/store/user/UserActions';
+import { getOneItem, updateItem } from 'src/app/store/user/UserActions';
 import { selectOneItem } from 'src/app/store/user/UserReducers';
 
 @Component({
@@ -33,18 +33,9 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit(ngForm: NgForm): void {
-    /* const putObject = Object.assign({id: this.user.id}, ngForm.value);
-    this.userService.update(putObject)
-      .toPromise().then(
-        user => history.back(),
-        err => {
-          this.serverError = err.error;
-          const to = setTimeout( () => {
-            clearTimeout(to);
-            this.serverError = '';
-          }, 3000);
-        }
-      ); */
+    const user: User = ({...ngForm.value, id: this.userID});
+    this.store.dispatch( updateItem({item: user}) );
+    history.back();
   }
 
 }

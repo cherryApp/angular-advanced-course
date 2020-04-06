@@ -1,6 +1,6 @@
 import { User } from 'src/app/model/user';
 import { createReducer, on } from '@ngrx/store';
-import { loadItems, errorItem, loadSelectedItem } from './UserActions';
+import { loadItems, errorItem, loadSelectedItem, loadUpdatedItem } from './UserActions';
 import { Action } from 'rxjs/internal/scheduler/Action';
 
 
@@ -22,6 +22,15 @@ export const UserReducer = createReducer(
   on(loadSelectedItem, (state, action) => ({
     ...state,
     selected: action.selected
+  })),
+  on(loadUpdatedItem, (state, action) => ({
+    ...state,
+    items: ((users): User[] => {
+      const i = users.items.findIndex( (item: User) => item.id === action.item.id );
+      const newItems = [...users.items];
+      newItems[i] = action.item;
+      return newItems;
+    })(state)
   })),
   on(errorItem, (state, action) => ({
     ...state,
