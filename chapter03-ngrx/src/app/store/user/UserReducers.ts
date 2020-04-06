@@ -1,6 +1,6 @@
 import { User } from 'src/app/model/user';
 import { createReducer, on } from '@ngrx/store';
-import { loadItems, errorItem, loadSelectedItem, loadUpdatedItem } from './UserActions';
+import { loadItems, errorItem, loadSelectedItem, loadUpdatedItem, loadAddedItem } from './UserActions';
 import { Action } from 'rxjs/internal/scheduler/Action';
 
 
@@ -31,6 +31,10 @@ export const UserReducer = createReducer(
       newItems[i] = action.item;
       return newItems;
     })(state)
+  })),
+  on(loadAddedItem, (state, action) => ({
+    ...state,
+    items: (state.items as User[]).concat(action.item)
   })),
   on(errorItem, (state, action) => ({
     ...state,

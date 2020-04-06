@@ -799,6 +799,14 @@
       "email": "minstone2r@timesonline.co.uk",
       "password": "$2a$10$W1sGUghZS4aPgIub/uzsKe8Jw4ACBCcaoavZdB4.pJk/nivE.rNXi",
       "role": 2
+    },
+    {
+      "first_name": "New",
+      "last_name": "User",
+      "email": "test@test.org",
+      "password": "$2a$10$3oajWNLqcdGA0TJreR5cluaBe4s3Ht6HJ/hmwWR8c6DeYmNOkJh7a",
+      "role": "2",
+      "id": 101
     }
   ]
 }

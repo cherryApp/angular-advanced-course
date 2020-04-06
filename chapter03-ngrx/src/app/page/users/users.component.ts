@@ -4,7 +4,7 @@ import { UserService } from 'src/app/service/user.service';
 import { ConfigService } from 'src/app/service/config.service';
 import { User } from 'src/app/model/user';
 import { Store, select } from '@ngrx/store';
-import { getItems } from 'src/app/store/user/UserActions';
+import { getItems, addItem } from 'src/app/store/user/UserActions';
 import { selectItems } from 'src/app/store/user/UserReducers';
 
 @Component({
@@ -34,6 +34,15 @@ export class UsersComponent implements OnInit {
       userResponse => console.log(userResponse),
       err => console.error(err)
     );
+  }
+
+  create(): void {
+    const user = new User();
+    user.first_name = 'New';
+    user.last_name = 'User';
+    user.email = 'test@test.org';
+    user.password = 'test';
+    this.store.dispatch( addItem({item: user}) );
   }
 
 }
