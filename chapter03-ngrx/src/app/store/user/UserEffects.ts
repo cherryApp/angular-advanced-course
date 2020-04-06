@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { UserService } from 'src/app/service/user.service';
 import { loadItems, getItems, getOneItem, LOAD_ITEMS, ERROR_ITEM, LOAD_SELECTED_ITEM } from './UserActions';
-import { switchMap, catchError, tap } from 'rxjs/operators';
+import { switchMap, catchError, tap, withLatestFrom } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 
 
@@ -21,7 +21,11 @@ export class UserEffect {
   getOneItem$ = createEffect( (): Observable<Action> => {
     return this.actions$.pipe(
       ofType(getOneItem),
-      switchMap( action => this.userService.get(action.id) ),
+      withLatestFrom(this.store$),
+      switchMap( ([action, store]) => {
+        const cache = store.users?.items?.find( item => item.id === action.id );
+        return cache ? of(cache) : this.userService.get(action.id);
+       } ),
       switchMap( user => of({ type: LOAD_SELECTED_ITEM, selected: user })),
       catchError( error => of({ type: ERROR_ITEM, message: error })),
     );
@@ -30,6 +34,7 @@ export class UserEffect {
   constructor(
     private actions$: Actions,
     private userService: UserService,
+    private store$: Store<any>,
   ) { }
 
 }
