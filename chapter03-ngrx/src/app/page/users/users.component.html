@@ -22,10 +22,15 @@
             {{ user[col.key] }}
           </td>
           <td>
-            <a class="btn btn-info"
-              routerLink="/user/edit/{{ user.id }}">
-              <i class="fa fa-pencil"></i>
-            </a>
+            <div class="btn-group">
+              <a class="btn btn-info"
+                routerLink="/user/edit/{{ user.id }}">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <button (click)="delete(user)" class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>

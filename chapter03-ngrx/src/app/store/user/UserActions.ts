@@ -10,6 +10,8 @@ export const UPDATE_ITEM = '[User] update item';
 export const LOAD_UPDATED_ITEM = '[User] load updated';
 export const ADD_ITEM = '[User] add item';
 export const LOAD_ADDED_ITEM = '[User] load added';
+export const DELETE_ITEM = '[User] delete item';
+export const REMOVE_ITEM = '[User] remove added';
 
 export const ERROR_ITEM = '[User] error item';
 
@@ -45,6 +47,15 @@ export const addItem = createAction(
 );
 export const loadAddedItem = createAction(
   LOAD_ADDED_ITEM,
+  props<{item: User}>()
+);
+
+export const deleteItem = createAction(
+  DELETE_ITEM,
+  props<{item: User}>()
+);
+export const removeDeletedItem = createAction(
+  REMOVE_ITEM,
   props<{item: User}>()
 );
 
