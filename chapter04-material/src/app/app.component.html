@@ -1,7 +1,7 @@
-<div class="main" fxLayout="column">
+<div class="main" fxLayout="column" fxFlexFill>
   <mat-toolbar class="app-toolbar mat-elevation-z6" color="primary">
     <mat-toolbar-row>
-      <button mat-icon-button fxShow="true" fxHide.gt-sm>
+      <button mat-icon-button fxShow="true" fxHide.gt-sm (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Material Design</span>
@@ -19,4 +19,26 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container" fxLayout="row" fxFlex="100">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a
+          *ngFor="let item of menuItems"
+          [routerLink]="item.url"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: item.url === '/'}"
+          mat-list-item>
+            <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+            {{ item.text }}
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <mat-icon>keyboard_arrow_left</mat-icon> Close
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

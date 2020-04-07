@@ -1,0 +1,19 @@
+.app-toolbar {
+  z-index: 2;
+}
+
+.sidenav-container {
+  z-index: 1;
+}
+
+mat-sidenav-content {
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+a[mat-button] {
+  color: rgb(200, 200, 200);
+  &.active {
+    color: white;
+  }
+}
