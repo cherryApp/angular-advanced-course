@@ -14,10 +14,22 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './page/home/home.component';
+import { BasicComponent } from './page/basic/basic.component';
+import { PaginatorComponent } from './page/paginator/paginator.component';
+import { FilterComponent } from './page/filter/filter.component';
+import { EditableComponent } from './page/editable/editable.component';
+import { UserEditorComponent } from './page/user-editor/user-editor.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    BasicComponent,
+    PaginatorComponent,
+    FilterComponent,
+    EditableComponent,
+    UserEditorComponent
   ],
   imports: [
     BrowserModule,
