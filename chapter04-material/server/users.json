@@ -87,12 +87,15 @@
       "address": "614 1st Point"
     },
     {
-      "id": 11,
       "first_name": "Fionna",
       "last_name": "Di Giorgio",
       "email": "fdigiorgioa@creativecommons.org",
       "gender": "Female",
-      "address": "6 Packers Place"
+      "address": "6 Packers Place",
+      "onBoarding": "2019-10-14T22:00:00.000Z",
+      "salary": 200000,
+      "active": true,
+      "id": 11
     },
     {
       "id": 12,

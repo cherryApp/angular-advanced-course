@@ -41,11 +41,47 @@
             placeholder="Gender"
             [(ngModel)]="user.gender">
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let gender of genders" [value]="genders">
+            <mat-option *ngFor="let gender of genders" [value]="gender">
               <span>{{ gender }}</span>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+
+        <mat-form-field class="example-fill-width">
+          <input
+            type="text"
+            name="address"
+            matInput
+            placeholder="Address"
+            [(ngModel)]="user.address">
+        </mat-form-field>
+
+        <mat-form-field class="example-fill-width">
+          <mat-label>Onboarding date</mat-label>
+          <input matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="user.onBoarding"
+            name="onBoarding">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-slider class="example-fill-width"
+          [(ngModel)]="user.salary"
+          thumbLabel
+          name="salary"
+          min="35000"
+          max="500000"
+          step="1000"
+          tickInterval="1000"
+          [displayWith]="formatLabel">
+        </mat-slider>
+
+        <mat-slide-toggle class="example-full-width mb-2"
+          name="active"
+          [(ngModel)]="user.active">
+          active
+        </mat-slide-toggle>
 
 
         <button mat-raised-button color="primary">
