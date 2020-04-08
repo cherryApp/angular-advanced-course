@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // Layout.
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -15,6 +16,9 @@ import { MatCardModule } from '@angular/material/card';
 // Material Components.
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +55,10 @@ import { UserEditorComponent } from './page/user-editor/user-editor.component';
     MatTableModule,
     HttpClientModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
