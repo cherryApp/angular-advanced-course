@@ -1,1 +1,13 @@
-<p>basic works!</p>
+<table mat-table [dataSource]="dataSource$ | async" class="mat-elevation-z8">
+
+  <!-- Define columns. -->
+  <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+    <th mat-header-cell *matHeaderCellDef> {{ col | titlecase }} </th>
+    <td mat-cell *matCellDef="let user"> {{ user[col] }} </td>
+  </ng-container>
+
+  <!-- Define rows. -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
