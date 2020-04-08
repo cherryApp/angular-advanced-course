@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 
 // Material Components.
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,7 @@ import { UserEditorComponent } from './page/user-editor/user-editor.component';
     MatCardModule,
     MatTableModule,
     HttpClientModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
