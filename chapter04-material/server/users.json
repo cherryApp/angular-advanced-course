@@ -12,14 +12,6 @@
       "id": 1
     },
     {
-      "id": 2,
-      "first_name": "Phyllis",
-      "last_name": "Chisholme",
-      "email": "pchisholme1@yahoo.co.jp",
-      "gender": "Female",
-      "address": "7707 Miller Street"
-    },
-    {
       "id": 3,
       "first_name": "Cally",
       "last_name": "O'Sheilds",
@@ -61,14 +53,6 @@
       "email": "bdibson6@skype.com",
       "gender": "Female",
       "address": "074 Iowa Plaza"
-    },
-    {
-      "id": 8,
-      "first_name": "Meyer",
-      "last_name": "Germon",
-      "email": "mgermon7@yandex.ru",
-      "gender": "Male",
-      "address": "26693 Sage Avenue"
     },
     {
       "id": 9,

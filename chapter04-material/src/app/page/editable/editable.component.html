@@ -46,3 +46,13 @@
   [pageSizeOptions]="pageSizes"
   showFirstLastButtons>
 </mat-paginator>
+
+<!-- Dialogs. -->
+<ng-template #dialogTemplate let-data>
+  <h3 class="custom-dialog-title">{{ data.title }}</h3>
+  <p class="custom-dialog-content">{{ data.content }}</p>
+  <div class="btn-group custom-dialog-buttons">
+    <button class="btn btn-secondary" [mat-dialog-close]="">Cancel</button>
+    <button class="btn btn-primary" [mat-dialog-close]="data">Ok</button>
+  </div>
+</ng-template>

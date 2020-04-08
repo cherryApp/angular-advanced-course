@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/model/user';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { UserService } from 'src/app/service/user.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/service/message.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editable',
@@ -28,10 +30,12 @@ export class EditableComponent implements OnInit, OnDestroy {
   currentFilterKey: string;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild('dialogTemplate') dialogTemplate: TemplateRef<any>;
 
   constructor(
     private userService: UserService,
     private router: Router,
+    private messageService: MessageService,
   ) { }
 
   applyFilter(event: Event): void {
@@ -62,9 +66,27 @@ export class EditableComponent implements OnInit, OnDestroy {
   }
 
   onDelete(user: User): void {
-    this.userService.delete(user.id).toPromise().then(
-      response => console.log(response),
-      err => console.error(err)
+    const dialogData = {
+      title: 'Are you sure?',
+      content: 'The user will be deleted permanently.',
+      template: this.dialogTemplate,
+    };
+    this.messageService.openDialog(dialogData).pipe(
+      take(1)
+    ).subscribe(
+      result => {
+        if (!result) {
+          return;
+        }
+
+        this.userService.delete(user.id).toPromise().then(
+          response => this.messageService.openSnackBar(
+            3000,
+            'User has been deleted.'
+          ),
+          err => console.error(err)
+        );
+      }
     );
   }
 

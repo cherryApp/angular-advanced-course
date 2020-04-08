@@ -1,0 +1,17 @@
+<ng-container *ngIf="!data.template">
+  <h1 mat-dialog-title>{{ data.title | titlecase }}</h1>
+  <div class="" mat-dialog-content>
+    <p>{{ data.content }}</p>
+  </div>
+  <div class="" mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="">
+      Cancel
+    </button>
+    <button mat-button [mat-dialog-close]="data">
+      Ok
+    </button>
+  </div>
+</ng-container>
+
+<ng-container *ngTemplateOutlet="data.template;context:{ $implicit: data }">
+</ng-container>

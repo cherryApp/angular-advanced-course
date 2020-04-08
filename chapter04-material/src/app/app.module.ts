@@ -36,6 +36,7 @@ import { PaginatorComponent } from './page/paginator/paginator.component';
 import { FilterComponent } from './page/filter/filter.component';
 import { EditableComponent } from './page/editable/editable.component';
 import { UserEditorComponent } from './page/user-editor/user-editor.component';
+import { DialogComponent } from './common/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UserEditorComponent } from './page/user-editor/user-editor.component';
     PaginatorComponent,
     FilterComponent,
     EditableComponent,
-    UserEditorComponent
+    UserEditorComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

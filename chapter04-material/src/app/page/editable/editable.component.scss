@@ -28,3 +28,28 @@ table {
     margin-right: 0;
   }
 }
+
+// Custom dialog.
+.custom-dialog-content {
+  font-style: italic;
+  color: rgb(121, 21, 21);
+}
+.custom-dialog-buttons {
+  button {
+    padding: .5rem;
+    text-align: center;
+    border: thick;
+    width: 49%;
+    background-color: #17a2b8;
+    &:first-child {
+      border-top-left-radius: .3rem;
+      border-bottom-left-radius: .3rem;
+      margin-right: 1%;
+    }
+    &:last-child {
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+      background-color: #dc3545;
+    }
+  }
+}
