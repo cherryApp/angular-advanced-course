@@ -1,1 +1,57 @@
-<p>user-editor works!</p>
+<mat-card class="mat-elevation-z4">
+  <mat-card-title>Edit User</mat-card-title>
+  <mat-card-content *ngIf="(user$ | async) as user">
+    <form #editorForm="ngForm" (ngSubmit)="onSubmit(editorForm, user)"
+      class="example-form" fxLayout="column">
+        <mat-form-field class="example-fill-width">
+          <input
+            type="text"
+            name="first_name"
+            matInput
+            placeholder="First Name"
+            [(ngModel)]="user.first_name">
+        </mat-form-field>
+
+        <mat-form-field class="example-fill-width">
+          <input
+            type="text"
+            name="last_name"
+            matInput
+            placeholder="Last Name"
+            [(ngModel)]="user.last_name">
+        </mat-form-field>
+
+        <mat-form-field class="example-fill-width">
+          <input
+            type="email"
+            name="email"
+            email
+            matInput
+            placeholder="Email"
+            [(ngModel)]="user.email">
+        </mat-form-field>
+
+        <mat-form-field class="example-fill-width">
+          <input
+            type="text"
+            name="gender"
+            email
+            matInput
+            [matAutocomplete]="auto"
+            placeholder="Gender"
+            [(ngModel)]="user.gender">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let gender of genders" [value]="genders">
+              <span>{{ gender }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary">
+          save
+        </button>
+
+    </form>
+  </mat-card-content>
+</mat-card>
