@@ -15,8 +15,8 @@ export class AuthService {
   loginUrl = `${this.config.apiUrl}login`;
   logoutUrl = `${this.config.apiUrl}logout`;
   storageName = 'currentUser';
-  currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
-  lastToken: string = null;
+  currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject(null);
+  lastToken: string = '';
 
 
   constructor(
